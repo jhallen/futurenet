@@ -579,16 +579,69 @@ You may convert the .NET file into a PADS ASCII file with:
 
     NET2PADS     (it prompts for the name of the .NET file)
 
-### How do you create new parts?
-
 ### How do busses work?
 
 I see them named like this; QB\<7:0>
 
-Bus breakout wires are labeled 0, 1, 2, etc.
+Bus breakout wires are labeled 0, 1, 2, etc. as SIGs.
 
-Can you have multiple labels on the same wire?  There are multiple busses on
-the same sheet, and the wires for each of them will be labeled 0, 1, 2, etc.
+In this example, there are two busses.  Even though the component signals
+are labeled the same (0, 1, 2 and 3), they end up on different nets.
+
+![Bus](doc/bus.png)
+
+The netlist ends up like this:
+
+~~~~
+(SIG,,+5V,,,
+PIN,1-1,1,U1,101,16
+PIN,1-1,3,U2,101,16
+)
+(SIG,,GND,,,
+PIN,1-1,1,U1,100,8
+PIN,1-1,3,U2,100,8
+)
+(SIG,b,0,1,5,0
+PIN,1-1,1,U1,21,15
+PIN,1-1,3,U2,23,15
+)
+(SIG,b,1,1,5,1
+PIN,1-1,1,U1,21,14
+PIN,1-1,3,U2,23,1
+)
+(SIG,b,2,1,5,2
+PIN,1-1,1,U1,21,13
+PIN,1-1,3,U2,23,2
+)
+(SIG,b,3,1,5,3
+PIN,1-1,1,U1,21,12
+PIN,1-1,3,U2,23,3
+)
+(SIG,x,0,1,5,0
+PIN,1-1,1,U1,21,11
+PIN,1-1,3,U2,23,4
+)
+(SIG,x,1,1,5,1
+PIN,1-1,1,U1,21,10
+PIN,1-1,3,U2,23,5
+)
+(SIG,x,2,1,5,2
+PIN,1-1,1,U1,21,9
+PIN,1-1,3,U2,23,6
+)
+(SIG,x,3,1,5,3
+PIN,1-1,1,U1,21,7
+PIN,1-1,3,U2,23,7
+)
+~~~~
+
+But there are more questions... how do you connect a subset of one bus to
+another bus?
+
+What happens when there are multiple signal names on wire that are part of
+busses?
+
+### How do you create new parts?
 
 Symbol types:
 
