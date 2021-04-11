@@ -465,37 +465,6 @@ The netlist ends up like this.  'q' and 'd' are gone, but the part are
 connected together with the top-level net 'mysig'.
 
 ~~~~
-NETLIST,2
-(DRAWING,\TRYNET\TOP.DWG,1-1
-)
-(DRAWING,\TRYNET\SOURCE.DWG,2-1
-PATH,\TRYNET\TOP.DWG,1,
-)
-(DRAWING,\TRYNET\DEST.DWG,3-1
-PATH,\TRYNET\TOP.DWG,2,
-)
-(SYM,2-1,1
-DATA,2,U1
-DATA,3,7400
-DATA,23,1
-DATA,23,2
-DATA,21,3
-DATA,100,7
-DATA,101,14
-)
-(SYM,3-1,1
-DATA,2,U2
-DATA,3,7404
-DATA,23,1
-DATA,21,2
-DATA,100,7
-DATA,101,14
-)
-(SIG,,,,,
-PIN,2-1,1,U1,23,1
-PIN,2-1,1,U1,23,2
-PIN,3-1,1,U2,21,2
-)
 (SIG,,+5V,,,
 PIN,2-1,1,U1,101,14
 PIN,3-1,1,U2,101,14
