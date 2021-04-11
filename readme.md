@@ -635,11 +635,16 @@ PIN,1-1,3,U2,23,7
 )
 ~~~~
 
-But there are more questions... how do you connect a subset of one bus to
-another bus?
+But there are more questions...  how do you connect a subset of one bus to
+another bus?  What happens when there are multiple signal names on wires that
+are part of busses?
 
-What happens when there are multiple signal names on wire that are part of
-busses?
+When I try something like this:
+
+![bus1](doc/bus1.png)
+
+DCM.EXE complains "Multiple bus name on bus 'b'".  Maybe this kind of thing
+can not be done.
 
 ### How do you create new parts?
 
