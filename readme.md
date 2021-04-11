@@ -165,6 +165,7 @@ sometimes FutureNet doesn't detect the pan request.
 There are commands to control the displayed grid:
 
     grid        - Turn the grid on or off
+    grid n      - Set grid factor
     grid snap   - Turn snap-to-grid on or off
 
 I've found that you probably do not want snap-to-grid on.  Many symbols have
@@ -177,6 +178,11 @@ Having all key symbol points on a grid is very important for keyboard
 acceleration.  You can make commands (or macros in OrCAD) to lay down a
 series of wires or labels in a structured way.  This is basically impossible
 to do without a grid.
+
+The finest grid looks like this.  At this level you will find that
+everything is on the grid.
+
+![grid](doc/grid.png)
 
 ### Selecting the sheet size
 
