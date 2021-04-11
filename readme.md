@@ -1,5 +1,7 @@
 # FutureNet Dash
 
+![Intro](doc/intro1.png)
+
 I had heard of FutureNet Dash, but had never used it.  It is the first
 schematic capture program usable for designing Xilinx FPGAs and maybe the
 first schematic capture program available for IBM PCs.  Recently I
@@ -11,6 +13,8 @@ pre-Windows programs is always interesting to explore.  I'm familiar with
 "Old DOS OrCAD"- it still has an active community and competes well even
 with modern ECAD programs.  OrCAD was the lower cost option for schematic
 cature, so I'm curious what the high-end tool was like.
+
+![Intro1](doc/intro.png)
 
 ## Available information
 
