@@ -1,12 +1,12 @@
 # FutureNet Dash
 
-![Intro](doc/intro1.png)
-
 I had heard of FutureNet Dash, but had never used it.  It is the first
 schematic capture program usable for designing Xilinx FPGAs and maybe the
 first schematic capture program available for IBM PCs.  Recently I
 discovered that a version is available online, but no manuals.  These are my
 notes from learning to use this $3850 (1988) program.
+
+![Intro](doc/intro1.png)
 
 Why even look at such an old program?  Well the user interface of these
 pre-Windows programs is always interesting to explore.  I'm familiar with
