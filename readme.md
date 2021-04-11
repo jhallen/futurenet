@@ -571,13 +571,210 @@ The command file, list.cmd should look like this:
     second
     -oout
 
-Next you convert the .DCM file into a .NET file with:
+Next you convert the .DCM file into a FutureNet native .NET file with:
 
     NETC out
+
+The netlist looks like this:
+
+~~~~
+NETLIST,2
+(DRAWING,\TRYNET\TOP.DWG,1-1
+)
+(DRAWING,\TRYNET\SOURCE.DWG,2-1
+PATH,\TRYNET\TOP.DWG,1,
+)
+(DRAWING,\TRYNET\DEST.DWG,3-1
+PATH,\TRYNET\TOP.DWG,2,
+)
+(SYM,2-1,1
+DATA,2,U1
+DATA,3,7400
+DATA,23,1
+DATA,23,2
+DATA,21,3
+DATA,100,7
+DATA,101,14
+)
+(SYM,3-1,1
+DATA,2,U2
+DATA,3,7404
+DATA,23,1
+DATA,21,2
+DATA,100,7
+DATA,101,14
+)
+(SIG,,,,,
+PIN,2-1,1,U1,23,1
+PIN,2-1,1,U1,23,2
+PIN,3-1,1,U2,21,2
+)
+(SIG,,+5V,,,
+PIN,2-1,1,U1,101,14
+PIN,3-1,1,U2,101,14
+)
+(SIG,,GND,,,
+PIN,2-1,1,U1,100,7
+PIN,3-1,1,U2,100,7
+)
+(SIG,,mysig,1,5,mysig
+PIN,2-1,1,U1,21,3
+PIN,3-1,1,U2,23,1
+)
+~~~~
 
 You may convert the .NET file into a PADS ASCII file with:
 
     NET2PADS     (it prompts for the name of the .NET file)
+
+The netlist looks like this:
+
+~~~~
+
+*PADS-PERFORM-V6-MILS* DESIGN DATABASE ASCII FILE 1.0
+*PART*  ITEMS
+
+U1  7400
+U2  7404
+
+*NET*
+
+*SIG*  +5V
+U1.14  U2.14  
+
+*SIG*  GND
+U1.7  U2.7  
+
+*SIG*  mysig
+U1.3  U2.1  
+
+*END*	OF ASCII INPUT FILE
+~~~~
+
+You may convert the .DCM file into a EDIF netlist with:
+
+    EDIF
+
+The netlist looks like this:
+
+~~~~
+(edif top
+    (edifversion 2 0 0)
+    (ediflevel 0)
+    (keywordmap (keywordlevel 0))
+    (status
+        (written
+            (timeStamp 19121 4 11 15 1 27)
+            (author "Data I/O Corporation")
+            (program "DASH to EDIF Netlist Writer" (Version "1.01"))
+        )
+    )
+    (comment "  DRAWING         DWG NO.   DWG REF NOs.")
+    (comment "\TRYNET\TOP.DWG       1        1")
+    (comment "\TRYNET\SOURCE.DWG    2        2")
+    (comment "\TRYNET\DEST.DWG      3        3")
+    (library FutureNet_Primitives
+        (ediflevel 0)
+        (technology
+            (numberDefinition)
+        )
+        (cell &7400
+            (cellType generic)
+            (view PART
+                (viewtype netlist)
+                (interface
+                    (port &1
+                        (direction INPUT)
+                    )
+                    (port &2
+                        (direction INPUT)
+                    )
+                    (port &3
+                        (direction OUTPUT)
+                    )
+                    (port &7
+                        (direction INPUT)
+                    )
+                    (port &14
+                        (direction INPUT)
+                    )
+                )
+            )
+        )
+        (cell &7404
+            (cellType generic)
+            (view PART
+                (viewtype netlist)
+                (interface
+                    (port &1
+                        (direction INPUT)
+                    )
+                    (port &2
+                        (direction OUTPUT)
+                    )
+                    (port &7
+                        (direction INPUT)
+                    )
+                    (port &14
+                        (direction INPUT)
+                    )
+                )
+            )
+        )
+        (cell top
+            (cellType generic)
+            (view DESIGN
+                (viewtype netlist)
+                (interface
+                )
+                (contents
+                    (instance U1_1_2
+                        (viewRef PART
+                            (cellRef &7400)
+                        )
+                        (designator "U1")
+                        (property PART
+                            (string "7400")
+                        )
+                    )
+                    (instance U2_1_3
+                        (viewRef PART
+                            (cellRef &7404)
+                        )
+                        (designator "U2")
+                        (property PART
+                            (string "7404")
+                        )
+                    )
+                    (net mysig_1
+                        (joined
+                            (portRef &3 (instanceRef U1_1_2))
+                            (portRef &1 (instanceRef U2_1_3))
+                        )
+                    )
+                    (net (rename P5V_2 "+5V_2")
+                        (joined
+                            (portRef &14 (instanceRef U1_1_2))
+                            (portRef &14 (instanceRef U2_1_3))
+                        )
+                    )
+                    (net GND_2
+                        (joined
+                            (portRef &7 (instanceRef U1_1_2))
+                            (portRef &7 (instanceRef U2_1_3))
+                        )
+                    )
+                )
+            )
+        )
+    )
+    (design top
+        (cellRef top
+            (libraryRef FutureNet_Primitives)
+        )
+    )
+)
+~~~~
 
 ### How do busses work?
 
