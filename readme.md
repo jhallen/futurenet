@@ -525,12 +525,47 @@ FutureNet will indicate that it is new and ask if it should be created.
 When you are in one of the subsheets, you can traverse between its siblings
 with the #R and #L commands.
 
+Here is an example of this.  This is the top-level sheet.  The functional
+symbol has three sub-sheets names page1, page2 and page3.
+
+![Flat top](doc/flattop.png)
+
+Here are the sub-sheets:
+
+![Page1](doc/page1.png)
+
+![Page2](doc/page2.png)
+
+![Page3](doc/page3.png)
+
 Another way is to feed a list of top-level sheets to DCM.EXE when you build
 the netlist.  You will not be able to use the #R and #L commands to traverse
 between sheets this way.
 
 Either way, all of the sibling sheets share the same namespace for signals-
 two wires labeled with the same signal name will be connected.
+
+In the example above, the netlist ends up like this:
+
+~~~~
+(SIG,,+5V,,,
+PIN,2-3,1,U1,101,16
+PIN,2-2,1,U2,101,14
+)
+(SIG,,GND,,14,GND
+PIN,2-1,1,R1,1,2
+PIN,2-3,1,U1,100,8
+PIN,2-2,1,U2,100,7
+)
+(SIG,,isel0,2,5,isel0
+PIN,2-1,1,R1,1,1
+PIN,2-2,1,U2,21,2
+)
+(SIG,,sel0,2,5,sel0
+PIN,2-3,1,U1,21,15
+PIN,2-2,1,U2,23,1
+)
+~~~~
 
 In OrCAD, you can supply an aligned vertical list of file names in a
 top-level sheel (not as part of a module symbol).  Very old versions of
