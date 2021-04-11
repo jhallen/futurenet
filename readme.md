@@ -863,3 +863,24 @@ can not be done.
 
 ### How do you create new parts?
 
+I have not entirely figured this out.  I know you choose an update library
+so that when new parts are defined, this is the library where they end up.
+
+Also, there is a symbol edit mode.  If you enter this mode after you have
+selected the 7404A inverter, it looks like this:
+
+![symdef](doc/symdef.png)
+
+There are a bunch of commands for drawing various shapes that make up
+symbols.
+
+I don't know how to add pins when you are in this mode.  It does not seem to
+allow alphanumeric field entry when in symbol mode.
+
+I think symbols end up being copied to the .DWG files that use them, because
+I can open a .DWG file without any libraries.  This is different from OrCAD
+where the symbols are always by-reference to a library file.  In OrCAD, if
+you modify a symbol in a library, you will see the change in all schematics
+that use it.  If symbols are copied, then how do you update all instances
+when you make a change in the library?  I know Altium prompts you to
+optionally update symbol instances after modifying the original.
