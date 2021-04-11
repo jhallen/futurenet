@@ -357,9 +357,13 @@ depends on where it is located and what its "attribute" is.  I think we
 would call attributes types today.  Attributes are mostly predefined (but there
 are also user defined attributes), and are numbered and named.
 
-First, decide on the purpose of the text.  For a label on a wire, we want a
-"SIG"- a Signal, which is attribute number 5.  So enter the command to
-select this attribute:
+OrCAD does not have this attribute concept.  Instead the type of any text
+depends on where it is located.  Typically there are different entry methods
+for the different locations.
+
+Anyway to place a label, first decide on the purpose of the text.  For a
+label on a wire, we want a "SIG"- a Signal, which is attribute number 5.  So
+enter the command to select this attribute:
 
     'a sig <Enter>       - Choose attribute by name
     'a 5 <Enter>         - Choose attribute by number
