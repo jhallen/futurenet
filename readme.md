@@ -365,6 +365,8 @@ select this attribute:
     'a 5 <Enter>         - Choose attribute by number
     'a <Enter>           - Brings up a menu of attributes
 
+![attrmenu](doc/attrmenu.png)
+
 From now on any new "Alphanumeric Fields" we enter will be signals.  In the
 rather likely event that you forgot to select the correct attribute type,
 you can change the attribute of existing text like this:
@@ -857,13 +859,3 @@ can not be done.
 
 ### How do you create new parts?
 
-Symbol types:
-
-block symbol
-
-.F create functional block
-
-ALso, .G toggle between graphic symbol (for comments only), and circuit
-symbol (electrically significant)
-
-"alphanumeric fields" have attribute numbers
