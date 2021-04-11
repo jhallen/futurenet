@@ -455,9 +455,16 @@ will also work).
 
 OrCAD has dedicated module port symbols this.
 
+Here is an example sheet with two functional blocks containing subsheets in
+it:
+
 ![top](doc/top.png)
 
+Here is the "source" sub-sheet:
+
 ![source](doc/source.png)
+
+Here is the "dest" sub-sheet:
 
 ![dest](doc/dest.png)
 
@@ -575,7 +582,8 @@ Next you convert the .DCM file into a FutureNet native .NET file with:
 
     NETC out
 
-The netlist looks like this:
+The netlist looks like this (which looks extremely like the Xilinx .XNX
+netlist format):
 
 ~~~~
 NETLIST,2
@@ -627,6 +635,8 @@ You may convert the .NET file into a PADS ASCII file with:
 
     NET2PADS     (it prompts for the name of the .NET file)
 
+PADS is a PCB layout program.
+
 The netlist looks like this:
 
 ~~~~
@@ -654,6 +664,8 @@ U1.3  U2.1
 You may convert the .DCM file into a EDIF netlist with:
 
     EDIF
+
+EDIF is a standard for netlist format, see [https://en.wikipedia.org/wiki/EDIF](https://en.wikipedia.org/wiki/EDIF)
 
 The netlist looks like this:
 
